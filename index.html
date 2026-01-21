@@ -1,0 +1,3060 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do Clique ao Conhecimento - Plataforma de Inclusão Digital</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== VARIÁVEIS E RESET ===== */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+            --text-light: #666;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+            
+            /* ODS Colors */
+            --ods-4: #c5192d;
+            --ods-8: #a21942;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f8f9fa;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .youtube-link {
+            background-color: #ff0000;
+            color: white !important;
+        }
+
+        .youtube-link:hover {
+            background-color: #cc0000 !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            display: none;
+            padding: 2rem 0;
+            min-height: 70vh;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: var(--primary-color);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat {
+            text-align: center;
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .stat h3 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .stat p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--secondary-color);
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .image-frame {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            bottom: -20px;
+            right: 20px;
+            max-width: 250px;
+        }
+
+        .floating-card i {
+            font-size: 2rem;
+            color: var(--ods-4);
+        }
+
+        .floating-card h4 {
+            font-size: 1rem;
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .floating-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .about-section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .project-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card .ru {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .ods-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .ods-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid transparent;
+        }
+
+        .ods-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .ods-card.ods-4 {
+            border-top-color: var(--ods-4);
+        }
+
+        .ods-card.ods-8 {
+            border-top-color: var(--ods-8);
+        }
+
+        .ods-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .ods-4 .ods-icon {
+            background-color: var(--ods-4);
+        }
+
+        .ods-8 .ods-icon {
+            background-color: var(--ods-8);
+        }
+
+        .ods-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .ods-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ===== VIDEOS SECTION ===== */
+        .videos-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .videos-header h2 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .videos-header h2 i {
+            color: #ff0000;
+            margin-right: 10px;
+        }
+
+        .channel-info {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .channel-link {
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .channel-link:hover {
+            text-decoration: underline;
+        }
+
+        .video-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            color: var(--text-color);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 0, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .video-card:hover .video-play-btn {
+            opacity: 1;
+        }
+
+        .video-play-btn i {
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 5px;
+        }
+
+        .video-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .video-card-info {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            line-height: 1.4;
+            height: 3.2em;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-views {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .video-date {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .video-completion {
+            margin-top: 1rem;
+        }
+
+        .completion-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--success-color);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .loading {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top-color: var(--secondary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== VIDEO PLAYER SECTION ===== */
+        .player-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-back {
+            background: none;
+            border: 2px solid var(--border-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            color: var(--text-color);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-back:hover {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .player-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 992px) {
+            .player-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .player-wrapper {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        #youtubePlayer {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            position: relative;
+        }
+
+        .video-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .player-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .player-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .player-placeholder h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .player-placeholder p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .player-video-info {
+            padding: 1.5rem;
+        }
+
+        .player-video-info p {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .player-video-meta {
+            display: flex;
+            gap: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .player-video-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ===== QUIZ SECTION ===== */
+        .quiz-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .quiz-header h3 {
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-header h3 i {
+            color: var(--secondary-color);
+        }
+
+        .quiz-info {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .quiz-status {
+            background: var(--light-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .quiz-progress {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Quiz Content */
+        .quiz-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quiz-intro {
+            text-align: center;
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quiz-intro p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            max-width: 400px;
+        }
+
+        .quiz-intro .btn-primary {
+            margin-top: 1rem;
+        }
+
+        #quizQuestions {
+            display: none;
+            flex: 1;
+        }
+
+        .question-counter {
+            background: var(--light-color);
+            padding: 0.8rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        #questionText {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            line-height: 1.5;
+            min-height: 60px;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex: 1;
+        }
+
+        .option {
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .option:hover {
+            border-color: var(--secondary-color);
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        .option.selected {
+            background: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+
+        .quiz-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: auto;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success-color), #219653);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Results Section */
+        #quizResults {
+            display: none;
+            flex: 1;
+        }
+
+        .results-card {
+            text-align: center;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .results-header {
+            margin-bottom: 2rem;
+        }
+
+        .results-header i {
+            font-size: 4rem;
+            color: var(--warning-color);
+            margin-bottom: 1rem;
+        }
+
+        .results-score {
+            margin-bottom: 2rem;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--success-color));
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        #scorePercentage {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: 0.5rem;
+        }
+
+        .results-feedback {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            max-width: 400px;
+        }
+
+        .results-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* ===== PROGRESS SECTION ===== */
+        .progress-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .progress-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .progress-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .progress-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .progress-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .progress-card p {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .progress-details {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .history-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .history-item:hover {
+            background: var(--light-color);
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-video {
+            flex: 1;
+        }
+
+        .history-video h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .history-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .history-score {
+            background: var(--light-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .empty-history {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+
+        .empty-history i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--border-color);
+        }
+
+        /* ===== NOTIFICAÇÕES ===== */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--success-color);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            z-index: 10000;
+            display: none;
+            animation: slideIn 0.3s ease;
+            max-width: 300px;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 0.8rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .ods-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+        }
+
+        .ods-badge.ods-4 {
+            background: var(--ods-4);
+            color: white;
+        }
+
+        .ods-badge.ods-8 {
+            background: var(--ods-8);
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            max-width: 600px;
+            margin: 1rem auto 0;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 992px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .floating-card {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                margin: 2rem auto 0;
+                max-width: 300px;
+            }
+            
+            .player-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .nav.active {
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: var(--shadow);
+            }
+            
+            .nav.active ul {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .quiz-controls {
+                flex-direction: column;
+            }
+            
+            .results-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            
+            .tagline {
+                font-size: 0.75rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .videos-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .ods-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-laptop-code"></i>
+                <div>
+                    <h1>Do Clique ao Conhecimento</h1>
+                    <p class="tagline">Inclusão Digital • Guajará-Mirim • Projeto Extensionista</p>
+                </div>
+            </div>
+            
+            <nav class="nav">
+                <ul>
+                    <li><a href="#" class="nav-link active" data-section="home"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="#" class="nav-link" data-section="videos"><i class="fas fa-play-circle"></i> Vídeo Aulas</a></li>
+                    <li><a href="#" class="nav-link" data-section="progress"><i class="fas fa-chart-line"></i> Meu Progresso</a></li>
+                    <li><a href="https://youtube.com/@umtiquindetudo" target="_blank" class="youtube-link"><i class="fab fa-youtube"></i> Canal</a></li>
+                </ul>
+            </nav>
+            
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Notificação -->
+    <div id="notification" class="notification">
+        <i class="fas fa-check-circle"></i> <span id="notificationText">Operação realizada com sucesso!</span>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Seção Home -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <span class="hero-badge">Projeto Extensionista • CST ADS</span>
+                    <h1>Inclusão Digital para Guajará-Mirim</h1>
+                    <p class="hero-description">
+                        Plataforma gratuita de informática básica para crianças, jovens e adultos. 
+                        Aprenda no seu ritmo com vídeos do nosso canal e quizzes educativos.
+                    </p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <h3 id="totalVideos">5</h3>
+                            <p>Vídeo Aulas</p>
+                        </div>
+                        <div class="stat">
+                            <h3 id="totalQuizzes">5</h3>
+                            <p>Quizzes</p>
+                        </div>
+                        <div class="stat">
+                            <h3 id="completedLessons">0</h3>
+                            <p>Lições Concluídas</p>
+                        </div>
+                        <div class="stat">
+                            <h3 id="averageScore">0%</h3>
+                            <p>Pontuação Média</p>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-buttons">
+                        <button class="btn-primary" data-section="videos">
+                            <i class="fas fa-play"></i> Começar a Aprender
+                        </button>
+                        <a href="#about" class="btn-secondary">
+                            <i class="fas fa-info-circle"></i> Sobre o Projeto
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <div class="image-frame">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Aprendizado Digital">
+                    </div>
+                    <div class="floating-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <div>
+                            <h4>Educação de Qualidade</h4>
+                            <p>ODS 4 • ODS 8</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sobre o Projeto -->
+            <div id="about" class="about-section">
+                <h2>Sobre o Projeto Extensionista</h2>
+                <div class="project-info">
+                    <div class="info-card">
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>Aluno</h3>
+                        <p>Gabriel do Nascimento Porto</p>
+                        <p class="ru">RU: 1726037</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-university"></i>
+                        <h3>Curso</h3>
+                        <p>CST em Análise e Desenvolvimento de Sistemas</p>
+                        <p>Atividade Extensionista I</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Local</h3>
+                        <p>Guajará-Mirim - Rondônia</p>
+                        <p>Comunidade Local</p>
+                    </div>
+                </div>
+                
+                <div class="ods-cards">
+                    <div class="ods-card ods-4">
+                        <div class="ods-icon">4</div>
+                        <h3>Educação de Qualidade</h3>
+                        <p>Garantir educação inclusiva, equitativa e de qualidade, e promover oportunidades de aprendizagem ao longo da vida para todos.</p>
+                    </div>
+                    <div class="ods-card ods-8">
+                        <div class="ods-icon">8</div>
+                        <h3>Trabalho Decente</h3>
+                        <p>Promover o crescimento econômico sustentado, inclusivo e sustentável, emprego pleno e produtivo e trabalho decente para todos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Vídeo Aulas -->
+        <section id="videos" class="section">
+            <div class="videos-header">
+                <h2><i class="fab fa-youtube"></i> Vídeo Aulas do Canal</h2>
+                <p class="channel-info">
+                    Conteúdo educativo do canal 
+                    <a href="https://youtube.com/@umtiquindetudo" target="_blank" class="channel-link">
+                        <i class="fab fa-youtube"></i> @umtiquindetudo
+                    </a>
+                </p>
+            </div>
+            
+            <div class="video-filters">
+                <button class="filter-btn active" data-filter="all">Todos os Vídeos</button>
+                <button class="filter-btn" data-filter="recent">Mais Recentes</button>
+                <button class="filter-btn" data-filter="incomplete">Não Concluídos</button>
+                <button class="filter-btn" data-filter="completed">Concluídos</button>
+            </div>
+            
+            <div id="videosContainer" class="videos-container">
+                <!-- Os vídeos serão carregados aqui pelo JavaScript -->
+            </div>
+        </section>
+
+        <!-- Player de Vídeo e Quiz -->
+        <section id="videoPlayer" class="section" style="display: none;">
+            <div class="player-header">
+                <button class="btn-back" onclick="app.backToVideos()">
+                    <i class="fas fa-arrow-left"></i> Voltar para Vídeos
+                </button>
+                <h2 id="videoTitle">Carregando vídeo...</h2>
+            </div>
+            
+            <div class="player-container">
+                <div class="player-wrapper">
+                    <div id="youtubePlayer">
+                        <!-- O vídeo será carregado aqui -->
+                        <div class="player-placeholder">
+                            <i class="fab fa-youtube"></i>
+                            <h3>Vídeo do YouTube</h3>
+                            <p>O vídeo será carregado em instantes...</p>
+                            <div class="spinner" style="width: 30px; height: 30px;"></div>
+                        </div>
+                    </div>
+                    <div class="player-video-info">
+                        <p id="videoDescription">Carregando descrição...</p>
+                        <div class="player-video-meta">
+                            <span><i class="fas fa-calendar"></i> <span id="videoDate">--/--/----</span></span>
+                            <span><i class="fas fa-book"></i> Aula <span id="videoPosition">0</span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quiz Section -->
+                <div class="quiz-section">
+                    <div class="quiz-header">
+                        <h3><i class="fas fa-question-circle"></i> Quiz do Vídeo</h3>
+                        <div class="quiz-info">
+                            <span class="quiz-status" id="quizStatus">Não iniciado</span>
+                            <span class="quiz-progress" id="quizProgress">0/10</span>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-content">
+                        <div class="quiz-intro">
+                            <h3>Teste seu Conhecimento</h3>
+                            <p>Este quiz contém <strong>10 questões</strong> relacionadas ao conteúdo do vídeo que você acabou de assistir.</p>
+                            <p>Responda corretamente para marcar esta aula como concluída!</p>
+                            <button class="btn-primary" onclick="quiz.startQuiz()">
+                                <i class="fas fa-play"></i> Iniciar Quiz
+                            </button>
+                        </div>
+                        
+                        <div id="quizQuestions">
+                            <div class="question-counter">
+                                Questão <span id="currentQuestion">1</span> de 10
+                            </div>
+                            <h4 id="questionText">Carregando questão...</h4>
+                            <div id="optionsContainer" class="options-container"></div>
+                            <div class="quiz-controls">
+                                <button class="btn-secondary" onclick="quiz.previousQuestion()" id="prevBtn">
+                                    <i class="fas fa-arrow-left"></i> Anterior
+                                </button>
+                                <button class="btn-primary" onclick="quiz.nextQuestion()" id="nextBtn">
+                                    Próxima <i class="fas fa-arrow-right"></i>
+                                </button>
+                                <button class="btn-success" onclick="quiz.finishQuiz()" id="finishBtn" style="display: none;">
+                                    <i class="fas fa-check"></i> Finalizar Quiz
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="quizResults">
+                            <div class="results-card">
+                                <div class="results-header">
+                                    <i class="fas fa-trophy"></i>
+                                    <h3>Quiz Concluído!</h3>
+                                </div>
+                                <div class="results-score">
+                                    <div class="score-circle">
+                                        <span id="finalScore">0</span>/10
+                                    </div>
+                                    <p id="scorePercentage">0%</p>
+                                </div>
+                                <div class="results-feedback" id="resultsFeedback">
+                                    <p>Carregando feedback...</p>
+                                </div>
+                                <div class="results-actions">
+                                    <button class="btn-primary" onclick="quiz.restartQuiz()">
+                                        <i class="fas fa-redo"></i> Refazer Quiz
+                                    </button>
+                                    <button class="btn-secondary" onclick="app.backToVideos()">
+                                        <i class="fas fa-video"></i> Próximo Vídeo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Progresso -->
+        <section id="progress" class="section">
+            <div class="progress-header">
+                <h2><i class="fas fa-chart-line"></i> Meu Progresso</h2>
+                <p>Acompanhe seu aprendizado e conquistas</p>
+            </div>
+            
+            <div class="progress-stats">
+                <div class="progress-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Vídeos Concluídos</h3>
+                    <p id="completedVideosCount">0</p>
+                </div>
+                <div class="progress-card">
+                    <i class="fas fa-star"></i>
+                    <h3>Pontuação Total</h3>
+                    <p id="totalScore">0</p>
+                </div>
+                <div class="progress-card">
+                    <i class="fas fa-percentage"></i>
+                    <h3>Taxa de Acerto</h3>
+                    <p id="accuracyRate">0%</p>
+                </div>
+                <div class="progress-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Tempo de Estudo</h3>
+                    <p id="studyTime">0 min</p>
+                </div>
+            </div>
+            
+            <div class="progress-details">
+                <h3>Histórico de Aprendizado</h3>
+                <div id="progressHistory" class="history-list">
+                    <div class="empty-history">
+                        <i class="fas fa-book-open"></i>
+                        <p>Comece a assistir vídeos e fazer quizzes para ver seu progresso aqui!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Projeto Extensionista</h3>
+                    <p>"Do Clique ao Conhecimento"</p>
+                    <p>CST em Análise e Desenvolvimento de Sistemas</p>
+                    <p>Atividade Extensionista I</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>ODS Atendidos</h3>
+                    <p><span class="ods-badge ods-4">ODS 4</span> Educação de Qualidade</p>
+                    <p><span class="ods-badge ods-8">ODS 8</span> Trabalho Decente</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Guajará-Mirim - RO</p>
+                    <p><i class="fas fa-user-graduate"></i> Gabriel do Nascimento Porto</p>
+                    <p><i class="fas fa-id-card"></i> RU: 1726037</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Do Clique ao Conhecimento - Projeto de Extensão Universitária</p>
+                <p class="footer-disclaimer">
+                    Esta plataforma é parte do projeto de extensão para promover inclusão digital em Guajará-Mirim.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT EMBUTIDO -->
+    <script>
+        // ===== SISTEMA DE NOTIFICAÇÕES =====
+        const Notification = {
+            show(message, type = 'success') {
+                const notification = document.getElementById('notification');
+                const text = document.getElementById('notificationText');
+                
+                // Definir cor baseada no tipo
+                let backgroundColor, icon;
+                switch(type) {
+                    case 'success':
+                        backgroundColor = '#27ae60';
+                        icon = 'fa-check-circle';
+                        break;
+                    case 'error':
+                        backgroundColor = '#e74c3c';
+                        icon = 'fa-exclamation-circle';
+                        break;
+                    case 'warning':
+                        backgroundColor = '#f39c12';
+                        icon = 'fa-exclamation-triangle';
+                        break;
+                    case 'info':
+                        backgroundColor = '#3498db';
+                        icon = 'fa-info-circle';
+                        break;
+                    default:
+                        backgroundColor = '#3498db';
+                        icon = 'fa-info-circle';
+                }
+                
+                notification.style.background = backgroundColor;
+                text.innerHTML = `<i class="fas ${icon}"></i> ${message}`;
+                notification.style.display = 'block';
+                
+                // Esconder após 3 segundos
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 3000);
+            }
+        };
+
+        // ===== BANCO DE QUESTÕES TEMÁTICAS =====
+        const QUESTION_BANK = {
+            // QUIZ 1: INTRODUÇÃO À INFORMÁTICA (10 questões)
+            introducao_informatica: [
+                {
+                    question: "Qual é considerado o 'cérebro' do computador?",
+                    options: [
+                        "Monitor",
+                        "Teclado",
+                        "CPU (Processador)",
+                        "Mouse"
+                    ],
+                    correct: 2,
+                    explanation: "A CPU (Unidade Central de Processamento) é o componente principal que executa todas as instruções."
+                },
+                {
+                    question: "O que significa a sigla 'PC'?",
+                    options: [
+                        "Pequeno Computador",
+                        "Programa de Computador",
+                        "Personal Computer (Computador Pessoal)",
+                        "Processador Central"
+                    ],
+                    correct: 2,
+                    explanation: "PC significa Personal Computer (Computador Pessoal), criado para uso individual."
+                },
+                {
+                    question: "Qual destes é um dispositivo de entrada?",
+                    options: [
+                        "Monitor",
+                        "Impressora",
+                        "Teclado",
+                        "Caixa de som"
+                    ],
+                    correct: 2,
+                    explanation: "O teclado é um dispositivo de entrada que permite inserir dados no computador."
+                },
+                {
+                    question: "Para que serve o monitor?",
+                    options: [
+                        "Armazenar arquivos",
+                        "Processar informações",
+                        "Exibir informações visualmente",
+                        "Conectar à internet"
+                    ],
+                    correct: 2,
+                    explanation: "O monitor é um dispositivo de saída que exibe informações visuais para o usuário."
+                },
+                {
+                    question: "O que é hardware?",
+                    options: [
+                        "Programas do computador",
+                        "Parte física do computador",
+                        "Linguagem de programação",
+                        "Sistema operacional"
+                    ],
+                    correct: 1,
+                    explanation: "Hardware são as partes físicas e tangíveis do computador (CPU, teclado, mouse, etc.)."
+                },
+                {
+                    question: "O que é software?",
+                    options: [
+                        "Placa-mãe do computador",
+                        "Programas e aplicativos",
+                        "Cabos e conexões",
+                        "Tela do monitor"
+                    ],
+                    correct: 1,
+                    explanation: "Software são os programas, aplicativos e sistemas que rodam no computador."
+                },
+                {
+                    question: "Qual destes é um sistema operacional?",
+                    options: [
+                        "Microsoft Word",
+                        "Google Chrome",
+                        "Windows",
+                        "Adobe Photoshop"
+                    ],
+                    correct: 2,
+                    explanation: "Windows é um sistema operacional, os outros são programas aplicativos."
+                },
+                {
+                    question: "Para que serve o mouse?",
+                    options: [
+                        "Para digitar textos",
+                        "Para mover o cursor na tela",
+                        "Para imprimir documentos",
+                        "Para armazenar dados"
+                    ],
+                    correct: 1,
+                    explanation: "O mouse é usado para mover o cursor e interagir com elementos na tela."
+                },
+                {
+                    question: "O que é um arquivo?",
+                    options: [
+                        "Uma pasta do computador",
+                        "Um programa em execução",
+                        "Informações armazenadas com um nome",
+                        "Uma parte do hardware"
+                    ],
+                    correct: 2,
+                    explanation: "Um arquivo é um conjunto de dados armazenados com um nome específico."
+                },
+                {
+                    question: "Qual a função principal da memória RAM?",
+                    options: [
+                        "Armazenar arquivos permanentemente",
+                        "Armazenar dados temporariamente durante o uso",
+                        "Processar gráficos 3D",
+                        "Controlar a internet"
+                    ],
+                    correct: 1,
+                    explanation: "A RAM armazena dados temporariamente para acesso rápido durante o uso do computador."
+                }
+            ],
+            
+            // QUIZ 2: WINDOWS 10 PARA INICIANTES (10 questões)
+            windows_iniciantes: [
+                {
+                    question: "O que é a Área de Trabalho (Desktop) do Windows?",
+                    options: [
+                        "O menu de configurações",
+                        "A tela principal com ícones e papel de parede",
+                        "A pasta de documentos",
+                        "O navegador de internet"
+                    ],
+                    correct: 1,
+                    explanation: "A Área de Trabalho é a tela principal onde ficam os ícones, atalhos e papel de parede."
+                },
+                {
+                    question: "Como se chama o botão no canto inferior esquerdo do Windows?",
+                    options: [
+                        "Botão Windows",
+                        "Botão Iniciar",
+                        "Botão Menu",
+                        "Botão Home"
+                    ],
+                    correct: 1,
+                    explanation: "É o Botão Iniciar, que dá acesso a programas, configurações e opções de energia."
+                },
+                {
+                    question: "Para que serve a Barra de Tarefas?",
+                    options: [
+                        "Mostrar a data e hora",
+                        "Exibir programas abertos e acesso rápido",
+                        "Controlar o volume do som",
+                        "Abrir o navegador de internet"
+                    ],
+                    correct: 1,
+                    explanation: "A Barra de Tarefas mostra programas abertos, menu Iniciar e área de notificação."
+                },
+                {
+                    question: "Como criar uma nova pasta no Windows?",
+                    options: [
+                        "Clicar em Arquivo > Novo",
+                        "Botão direito > Novo > Pasta",
+                        "Pressionar F2",
+                        "Arrastar um arquivo"
+                    ],
+                    correct: 1,
+                    explanation: "Clique com o botão direito em um local vazio e escolha 'Novo > Pasta'."
+                },
+                {
+                    question: "O que é o Explorador de Arquivos?",
+                    options: [
+                        "Um programa para navegar na internet",
+                        "Um aplicativo para organizar arquivos e pastas",
+                        "Um sistema de busca",
+                        "Uma ferramenta de edição"
+                    ],
+                    correct: 1,
+                    explanation: "O Explorador de Arquivos permite gerenciar e organizar todos os arquivos e pastas."
+                },
+                {
+                    question: "Como selecionar múltiplos arquivos que não estão em sequência?",
+                    options: [
+                        "Arrastando o mouse",
+                        "Pressionando Ctrl + A",
+                        "Pressionando Ctrl + clique em cada arquivo",
+                        "Usando a tecla Shift"
+                    ],
+                    correct: 2,
+                    explanation: "Pressione Ctrl enquanto clica em cada arquivo para seleção múltipla não sequencial."
+                },
+                {
+                    question: "O que acontece quando você minimiza uma janela?",
+                    options: [
+                        "A janela fecha permanentemente",
+                        "A janela vai para a Barra de Tarefas",
+                        "A janela aumenta de tamanho",
+                        "A janela fica transparente"
+                    ],
+                    correct: 1,
+                    explanation: "Minimizar envia a janela para a Barra de Tarefas, sem fechá-la."
+                },
+                {
+                    question: "Para que serve a Lixeira?",
+                    options: [
+                        "Acelerar o computador",
+                        "Armazenar arquivos importantes",
+                        "Guardar arquivos excluídos temporariamente",
+                        "Organizar programas"
+                    ],
+                    correct: 2,
+                    explanation: "A Lixeira armazena arquivos excluídos temporariamente antes da exclusão permanente."
+                },
+                {
+                    question: "Como renomear um arquivo rapidamente?",
+                    options: [
+                        "Clique duplo no nome",
+                        "Pressione F2",
+                        "Botão direito > Renomear",
+                        "Todas as opções acima"
+                    ],
+                    correct: 3,
+                    explanation: "Todas as opções são maneiras válidas de renomear um arquivo no Windows."
+                },
+                {
+                    question: "O que é um atalho no Windows?",
+                    options: [
+                        "Um arquivo que ocupa pouco espaço",
+                        "Um ícone que abre rapidamente um programa ou arquivo",
+                        "Um tipo de teclado especial",
+                        "Um comando para desligar"
+                    ],
+                    correct: 1,
+                    explanation: "Um atalho é um ícone que permite acesso rápido a um programa, arquivo ou pasta."
+                }
+            ],
+            
+            // QUIZ 3: INTERNET E NAVEGAÇÃO SEGURA (10 questões)
+            internet_segura: [
+                {
+                    question: "O que significa a sigla 'URL'?",
+                    options: [
+                        "Universal Resource Locator",
+                        "Uniform Resource Link",
+                        "Universal Reference Location",
+                        "Uniform Reference Locator"
+                    ],
+                    correct: 0,
+                    explanation: "URL significa Universal Resource Locator, o endereço único de uma página na web."
+                },
+                {
+                    question: "O que é um navegador de internet?",
+                    options: [
+                        "Um programa de edição de texto",
+                        "Um aplicativo para acessar sites (como Chrome, Firefox)",
+                        "Um sistema operacional",
+                        "Um tipo de antivírus"
+                    ],
+                    correct: 1,
+                    explanation: "Navegadores (browsers) são programas para acessar e visualizar páginas da internet."
+                },
+                {
+                    question: "Qual é a função do botão 'Atualizar' no navegador?",
+                    options: [
+                        "Fechar a página atual",
+                        "Recarregar a página para ver conteúdo novo",
+                        "Voltar à página anterior",
+                        "Abrir uma nova aba"
+                    ],
+                    correct: 1,
+                    explanation: "O botão Atualizar (F5) recarrega a página para buscar conteúdo atualizado."
+                },
+                {
+                    question: "O que significa 'https://' no início de um endereço?",
+                    options: [
+                        "Que o site é em português",
+                        "Que a conexão é segura e criptografada",
+                        "Que o site é rápido",
+                        "Que é um site de vídeos"
+                    ],
+                    correct: 1,
+                    explanation: "HTTPS indica que a comunicação com o site é segura e os dados são protegidos."
+                },
+                {
+                    question: "O que é um hiperlink (link)?",
+                    options: [
+                        "Um tipo de cabo de internet",
+                        "Texto ou imagem clicável que leva a outra página",
+                        "Uma conexão sem fio",
+                        "Um programa especial"
+                    ],
+                    correct: 1,
+                    explanation: "Hiperlinks são elementos clicáveis que redirecionam para outras páginas ou recursos."
+                },
+                {
+                    question: "Por que é perigoso clicar em links desconhecidos?",
+                    options: [
+                        "Podem deixar o computador lento",
+                        "Podem levar a sites maliciosos que roubam dados",
+                        "Podem abrir muitos anúncios",
+                        "Podem imprimir documentos sozinhos"
+                    ],
+                    correct: 1,
+                    explanation: "Links desconhecidos podem levar a sites fraudulentos ou instalar vírus."
+                },
+                {
+                    question: "O que é phishing?",
+                    options: [
+                        "Um tipo de jogo online",
+                        "Técnica para roubar dados através de emails falsos",
+                        "Um programa de edição de fotos",
+                        "Uma conexão de internet rápida"
+                    ],
+                    correct: 1,
+                    explanation: "Phishing é fraude onde criminosos tentam obter dados sensíveis com emails falsos."
+                },
+                {
+                    question: "O que é uma senha forte?",
+                    options: [
+                        "Uma senha fácil de lembrar",
+                        "Senha com pelo menos 8 caracteres, incluindo letras, números e símbolos",
+                        "Sua data de nascimento",
+                        "Uma senha que você usa em todos os sites"
+                    ],
+                    correct: 1,
+                    explanation: "Senhas fortes combinam diferentes tipos de caracteres para maior segurança."
+                },
+                {
+                    question: "Para que serve o histórico de navegação?",
+                    options: [
+                        "Acelerar a internet",
+                        "Registrar sites visitados recentemente",
+                        "Bloquear anúncios",
+                        "Melhorar a qualidade do vídeo"
+                    ],
+                    correct: 1,
+                    explanation: "O histórico guarda registro dos sites visitados para acesso rápido posterior."
+                },
+                {
+                    question: "O que significa fazer 'download'?",
+                    options: [
+                        "Enviar um arquivo para a internet",
+                        "Baixar/copiar um arquivo da internet para seu computador",
+                        "Excluir um arquivo",
+                        "Compartilhar nas redes sociais"
+                    ],
+                    correct: 1,
+                    explanation: "Download é o processo de baixar/copiar arquivos da internet para seu dispositivo."
+                }
+            ],
+            
+            // QUIZ 4: MICROSOFT WORD BÁSICO (10 questões)
+            word_basico: [
+                {
+                    question: "Para que serve o Microsoft Word?",
+                    options: [
+                        "Criar planilhas",
+                        "Editar textos e documentos",
+                        "Fazer apresentações",
+                        "Navegar na internet"
+                    ],
+                    correct: 1,
+                    explanation: "Word é um processador de texto para criar, editar e formatar documentos."
+                },
+                {
+                    question: "Qual atalho salva um documento?",
+                    options: [
+                        "Ctrl + C",
+                        "Ctrl + V",
+                        "Ctrl + S",
+                        "Ctrl + P"
+                    ],
+                    correct: 2,
+                    explanation: "Ctrl + S é o atalho universal para salvar documentos."
+                },
+                {
+                    question: "Como deixar um texto em negrito?",
+                    options: [
+                        "Ctrl + N",
+                        "Ctrl + B",
+                        "Ctrl + I",
+                        "Ctrl + U"
+                    ],
+                    correct: 1,
+                    explanation: "Ctrl + B aplica formatação em negrito (Bold)."
+                },
+                {
+                    question: "Para que serve a tecla 'Enter' no Word?",
+                    options: [
+                        "Apagar texto",
+                        "Copiar texto",
+                        "Pular para a próxima linha/parágrafo",
+                        "Selecionar tudo"
+                    ],
+                    correct: 2,
+                    explanation: "Enter cria uma nova linha ou parágrafo no documento."
+                },
+                {
+                    question: "O que é a Barra de Ferramentas de Acesso Rápido?",
+                    options: [
+                        "Local onde fica o texto",
+                        "Área com botões de comandos usados frequentemente",
+                        "A régua de medidas",
+                        "A barra de status"
+                    ],
+                    correct: 1,
+                    explanation: "Contém botões para comandos usados com frequência, como Salvar e Desfazer."
+                },
+                {
+                    question: "Como copiar texto selecionado?",
+                    options: [
+                        "Ctrl + X",
+                        "Ctrl + C",
+                        "Ctrl + V",
+                        "Ctrl + Z"
+                    ],
+                    correct: 1,
+                    explanation: "Ctrl + C copia o texto selecionado para a área de transferência."
+                },
+                {
+                    question: "Como colar texto copiado?",
+                    options: [
+                        "Ctrl + X",
+                        "Ctrl + C",
+                        "Ctrl + V",
+                        "Ctrl + Z"
+                    ],
+                    correct: 2,
+                    explanation: "Ctrl + V cola o conteúdo da área de transferência."
+                },
+                {
+                    question: "Para que serve o comando 'Desfazer'?",
+                    options: [
+                        "Avançar uma ação",
+                        "Reverter a última ação realizada",
+                        "Excluir o documento",
+                        "Imprimir o texto"
+                    ],
+                    correct: 1,
+                    explanation: "Desfazer (Ctrl + Z) reverte a última ação realizada."
+                },
+                {
+                    question: "Como alterar o tamanho da fonte?",
+                    options: [
+                        "Na guia Inserir",
+                        "Na guia Layout",
+                        "Na guia Página Inicial > tamanho da fonte",
+                        "Na guia Revisão"
+                    ],
+                    correct: 2,
+                    explanation: "O tamanho da fonte é alterado na guia Página Inicial, no grupo Fonte."
+                },
+                {
+                    question: "O que significa salvar um documento?",
+                    options: [
+                        "Enviar por email",
+                        "Imprimir",
+                        "Guardar alterações permanentemente no computador",
+                        "Compartilhar nas redes sociais"
+                    ],
+                    correct: 2,
+                    explanation: "Salvar armazena as alterações do documento no disco rígido."
+                }
+            ],
+            
+            // QUIZ 5: EXCEL PARA INICIANTES (10 questões)
+            excel_iniciantes: [
+                {
+                    question: "Para que serve o Microsoft Excel?",
+                    options: [
+                        "Editar textos",
+                        "Criar apresentações",
+                        "Trabalhar com planilhas e cálculos",
+                        "Navegar na internet"
+                    ],
+                    correct: 2,
+                    explanation: "Excel é um programa de planilhas eletrônicas para cálculos, tabelas e gráficos."
+                },
+                {
+                    question: "O que é uma célula no Excel?",
+                    options: [
+                        "Um programa dentro do Excel",
+                        "A interseção de uma linha e uma coluna",
+                        "Um tipo de gráfico",
+                        "Uma fórmula especial"
+                    ],
+                    correct: 1,
+                    explanation: "Célula é a unidade básica da planilha, onde linhas e colunas se cruzam."
+                },
+                {
+                    question: "Como é identificada a primeira célula de uma planilha?",
+                    options: [
+                        "1A",
+                        "A1",
+                        "AA1",
+                        "1AA"
+                    ],
+                    correct: 1,
+                    explanation: "A primeira célula é A1 (coluna A, linha 1)."
+                },
+                {
+                    question: "Qual símbolo inicia uma fórmula no Excel?",
+                    options: [
+                        "#",
+                        "@",
+                        "=",
+                        "$"
+                    ],
+                    correct: 2,
+                    explanation: "Todas as fórmulas no Excel começam com o símbolo de igual (=)."
+                },
+                {
+                    question: "Como somar os valores das células A1 a A10?",
+                    options: [
+                        "=SOMA(A1:A10)",
+                        "=TOTAL(A1-A10)",
+                        "=ADICIONAR(A1+A10)",
+                        "=CALCULAR(A1 até A10)"
+                    ],
+                    correct: 0,
+                    explanation: "A função SOMA calcula o total de um intervalo de células."
+                },
+                {
+                    question: "Como selecionar uma coluna inteira?",
+                    options: [
+                        "Clicar no número da linha",
+                        "Clicar na letra da coluna",
+                        "Clicar em uma célula",
+                        "Arrastar o mouse"
+                    ],
+                    correct: 1,
+                    explanation: "Clique na letra no topo da coluna para selecioná-la inteira."
+                },
+                {
+                    question: "Para que serve a função MÉDIA?",
+                    options: [
+                        "Somar valores",
+                        "Encontrar o maior valor",
+                        "Calcular a média aritmética",
+                        "Contar células"
+                    ],
+                    correct: 2,
+                    explanation: "A função MÉDIA calcula a média aritmética de um conjunto de valores."
+                },
+                {
+                    question: "Como criar um gráfico no Excel?",
+                    options: [
+                        "Inserir > Gráfico",
+                        "Fórmulas > Gráfico",
+                        "Dados > Gráfico",
+                        "Revisão > Gráfico"
+                    ],
+                    correct: 0,
+                    explanation: "Gráficos são criados na guia Inserir, grupo Gráficos."
+                },
+                {
+                    question: "O que acontece quando você digita '=2+3' em uma célula?",
+                    options: [
+                        "Aparece o texto '=2+3'",
+                        "A célula calcula e mostra o resultado 5",
+                        "O Excel apresenta erro",
+                        "Nada acontece"
+                    ],
+                    correct: 1,
+                    explanation: "O Excel calcula automaticamente fórmulas e mostra o resultado."
+                },
+                {
+                    question: "Como mudar a largura de uma coluna?",
+                    options: [
+                        "Arrastar a borda direita do cabeçalho da coluna",
+                        "Clicar duas vezes na célula",
+                        "Usar a tecla F2",
+                        "Menu Formatar > Coluna"
+                    ],
+                    correct: 0,
+                    explanation: "Arraste a borda do cabeçalho da coluna para ajustar a largura."
+                }
+            ],
+            
+            // QUIZ 6: SEGURANÇA DIGITAL (10 questões)
+            seguranca_digital: [
+                {
+                    question: "O que é um vírus de computador?",
+                    options: [
+                        "Um programa útil",
+                        "Software malicioso que danifica o sistema",
+                        "Um tipo de hardware",
+                        "Um programa para editar fotos"
+                    ],
+                    correct: 1,
+                    explanation: "Vírus é software malicioso projetado para infectar e danificar computadores."
+                },
+                {
+                    question: "Por que é importante ter antivírus?",
+                    options: [
+                        "Para deixar o computador mais rápido",
+                        "Para proteger contra programas maliciosos",
+                        "Para acessar internet mais rápido",
+                        "Para editar documentos"
+                    ],
+                    correct: 1,
+                    explanation: "Antivírus protege contra vírus, malware e outras ameaças digitais."
+                },
+                {
+                    question: "O que é backup?",
+                    options: [
+                        "Excluir arquivos antigos",
+                        "Cópia de segurança de dados importantes",
+                        "Formatar o computador",
+                        "Instalar programas"
+                    ],
+                    correct: 1,
+                    explanation: "Backup é cópia de segurança para recuperar dados em caso de perda."
+                },
+                {
+                    question: "Por que não devemos usar senhas óbvias como '123456'?",
+                    options: [
+                        "São muito longas",
+                        "São fáceis de adivinhar por hackers",
+                        "O computador não aceita",
+                        "Esquecemos facilmente"
+                    ],
+                    correct: 1,
+                    explanation: "Senhas óbvias são vulneráveis e facilmente descobertas por ataques."
+                },
+                {
+                    question: "O que são atualizações de software?",
+                    options: [
+                        "Novos jogos",
+                        "Correções de segurança e melhorias",
+                        "Mudança de cor do sistema",
+                        "Limpeza de arquivos"
+                    ],
+                    correct: 1,
+                    explanation: "Atualizações corrigem falhas de segurança e adicionam melhorias."
+                },
+                {
+                    question: "O que é rede Wi-Fi segura?",
+                    options: [
+                        "Rede sem senha",
+                        "Rede com senha forte e criptografia",
+                        "Rede muito rápida",
+                        "Rede com nome bonito"
+                    ],
+                    correct: 1,
+                    explanation: "Wi-Fi segura tem senha forte e criptografia para proteger dados."
+                },
+                {
+                    question: "Por que não devemos baixar arquivos de sites desconhecidos?",
+                    options: [
+                        "Podem ser muito grandes",
+                        "Podem conter vírus ou malware",
+                        "Podem ser lentos para baixar",
+                        "Podem estar em outra língua"
+                    ],
+                    correct: 1,
+                    explanation: "Arquivos de fontes desconhecidas podem conter software malicioso."
+                },
+                {
+                    question: "O que fazer se receber email pedindo senha bancária?",
+                    options: [
+                        "Responder com os dados",
+                        "Ignorar e não clicar em links",
+                        "Encaminhar para amigos",
+                        "Imprimir o email"
+                    ],
+                    correct: 1,
+                    explanation: "Nunca forneça dados sensíveis por email - é provavelmente golpe."
+                },
+                {
+                    question: "O que é firewall?",
+                    options: [
+                        "Parede de fogo decorativa",
+                        "Sistema que bloqueia acessos não autorizados",
+                        "Tipo de antivírus",
+                        "Programa de edição"
+                    ],
+                    correct: 1,
+                    explanation: "Firewall é barreira de segurança que controla tráfego de rede."
+                },
+                {
+                    question: "Por que fazer logout em computadores públicos?",
+                    options: [
+                        "Para economizar energia",
+                        "Para liberar o computador para outros",
+                        "Para evitar que outros acessem suas contas",
+                        "Para limpar o histórico"
+                    ],
+                    correct: 2,
+                    explanation: "Logout previne que pessoas usem suas contas após você sair."
+                }
+            ]
+        };
+
+        // ===== SISTEMA DE ARMAZENAMENTO =====
+        const Storage = {
+            saveProgress(videoId, score, totalQuestions) {
+                const progress = this.getProgress();
+                const videoProgress = {
+                    videoId,
+                    score,
+                    totalQuestions,
+                    date: new Date().toISOString(),
+                    completed: true
+                };
+                
+                const existingIndex = progress.findIndex(p => p.videoId === videoId);
+                if (existingIndex !== -1) {
+                    progress[existingIndex] = videoProgress;
+                } else {
+                    progress.push(videoProgress);
+                }
+                
+                localStorage.setItem('learningProgress', JSON.stringify(progress));
+                this.updateStatistics();
+                
+                Notification.show(`Quiz concluído! Você fez ${score}/${totalQuestions} pontos!`, 'success');
+                return videoProgress;
+            },
+            
+            getProgress() {
+                const progress = localStorage.getItem('learningProgress');
+                return progress ? JSON.parse(progress) : [];
+            },
+            
+            isVideoCompleted(videoId) {
+                const progress = this.getProgress();
+                return progress.some(p => p.videoId === videoId && p.completed);
+            },
+            
+            getVideoScore(videoId) {
+                const progress = this.getProgress();
+                const videoProgress = progress.find(p => p.videoId === videoId);
+                return videoProgress ? videoProgress.score : 0;
+            },
+            
+            updateStatistics() {
+                const progress = this.getProgress();
+                const stats = {
+                    totalVideos: progress.length,
+                    totalScore: progress.reduce((sum, p) => sum + p.score, 0),
+                    totalPossible: progress.reduce((sum, p) => sum + p.totalQuestions, 0),
+                    lastUpdated: new Date().toISOString()
+                };
+                
+                localStorage.setItem('learningStats', JSON.stringify(stats));
+                app.updateProgressDisplay();
+            },
+            
+            getStatistics() {
+                const stats = localStorage.getItem('learningStats');
+                return stats ? JSON.parse(stats) : {
+                    totalVideos: 0,
+                    totalScore: 0,
+                    totalPossible: 0,
+                    lastUpdated: null
+                };
+            },
+            
+            clearProgress() {
+                localStorage.removeItem('learningProgress');
+                localStorage.removeItem('learningStats');
+                this.updateStatistics();
+                Notification.show('Progresso limpo com sucesso!', 'warning');
+            }
+        };
+
+        // ===== SISTEMA DE QUIZ =====
+        const quiz = {
+            currentVideo: null,
+            currentQuestions: [],
+            currentQuestionIndex: 0,
+            userAnswers: [],
+            score: 0,
+            
+            startQuiz() {
+                if (!this.currentVideo) {
+                    Notification.show('Selecione um vídeo primeiro!', 'error');
+                    return;
+                }
+                
+                // Gerar 10 questões específicas para o tema do vídeo
+                this.generateSpecificQuestions();
+                this.currentQuestionIndex = 0;
+                this.userAnswers = new Array(10).fill(null);
+                this.score = 0;
+                
+                // Mostrar interface do quiz
+                document.querySelector('.quiz-intro').style.display = 'none';
+                document.getElementById('quizQuestions').style.display = 'block';
+                document.getElementById('quizResults').style.display = 'none';
+                
+                document.getElementById('quizStatus').textContent = 'Em andamento';
+                document.getElementById('quizStatus').style.background = '#f39c12';
+                
+                this.loadQuestion();
+                
+                Notification.show('Quiz iniciado! Boa sorte!', 'info');
+            },
+            
+            generateSpecificQuestions() {
+                // Mapear cada vídeo para seu quiz específico
+                const video = this.currentVideo;
+                
+                // Usar o tema do vídeo para selecionar o quiz correto
+                if (video.theme && QUESTION_BANK[video.theme]) {
+                    // Usar as 10 questões específicas do tema
+                    this.currentQuestions = [...QUESTION_BANK[video.theme]];
+                } else {
+                    // Fallback: usar questões gerais de informática
+                    this.currentQuestions = [...QUESTION_BANK.introducao_informatica];
+                }
+            },
+            
+            loadQuestion() {
+                const question = this.currentQuestions[this.currentQuestionIndex];
+                if (!question) return;
+                
+                // Atualizar contador
+                document.getElementById('currentQuestion').textContent = this.currentQuestionIndex + 1;
+                document.getElementById('quizProgress').textContent = `${this.currentQuestionIndex + 1}/10`;
+                
+                // Atualizar texto da questão
+                document.getElementById('questionText').textContent = question.question;
+                
+                // Limpar opções anteriores
+                const optionsContainer = document.getElementById('optionsContainer');
+                optionsContainer.innerHTML = '';
+                
+                // Adicionar novas opções
+                question.options.forEach((option, index) => {
+                    const optionElement = document.createElement('div');
+                    optionElement.className = 'option';
+                    
+                    // Marcar se já foi respondida
+                    if (this.userAnswers[this.currentQuestionIndex] === index) {
+                        optionElement.classList.add('selected');
+                    }
+                    
+                    optionElement.textContent = option;
+                    optionElement.onclick = () => this.selectAnswer(index);
+                    optionsContainer.appendChild(optionElement);
+                });
+                
+                // Atualizar botões de navegação
+                this.updateNavigationButtons();
+            },
+            
+            selectAnswer(answerIndex) {
+                // Remover seleção anterior de todas as opções
+                document.querySelectorAll('.option').forEach(option => {
+                    option.classList.remove('selected');
+                });
+                
+                // Marcar nova seleção
+                event.currentTarget.classList.add('selected');
+                
+                // Salvar resposta
+                this.userAnswers[this.currentQuestionIndex] = answerIndex;
+                
+                // Atualizar botão próximo
+                this.updateNavigationButtons();
+            },
+            
+            updateNavigationButtons() {
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                const finishBtn = document.getElementById('finishBtn');
+                
+                // Botão anterior
+                prevBtn.disabled = this.currentQuestionIndex === 0;
+                
+                // Verificar se a questão atual foi respondida
+                const currentQuestionAnswered = this.userAnswers[this.currentQuestionIndex] !== null;
+                
+                // Botão próximo/finalizar
+                if (this.currentQuestionIndex === 9) { // Última questão
+                    nextBtn.style.display = 'none';
+                    finishBtn.style.display = 'inline-flex';
+                    
+                    // Habilitar botão finalizar apenas se respondeu
+                    finishBtn.disabled = !currentQuestionAnswered;
+                } else {
+                    nextBtn.style.display = 'inline-flex';
+                    finishBtn.style.display = 'none';
+                    
+                    // Habilitar botão próximo apenas se respondeu
+                    nextBtn.disabled = !currentQuestionAnswered;
+                }
+            },
+            
+            previousQuestion() {
+                if (this.currentQuestionIndex > 0) {
+                    this.currentQuestionIndex--;
+                    this.loadQuestion();
+                }
+            },
+            
+            nextQuestion() {
+                if (this.userAnswers[this.currentQuestionIndex] === null) {
+                    Notification.show('Por favor, selecione uma resposta!', 'warning');
+                    return;
+                }
+                
+                if (this.currentQuestionIndex < 9) {
+                    this.currentQuestionIndex++;
+                    this.loadQuestion();
+                }
+            },
+            
+            finishQuiz() {
+                if (this.userAnswers[this.currentQuestionIndex] === null) {
+                    Notification.show('Por favor, responda a última questão!', 'warning');
+                    return;
+                }
+                
+                // Calcular pontuação
+                this.score = 0;
+                this.currentQuestions.forEach((question, index) => {
+                    if (this.userAnswers[index] === question.correct) {
+                        this.score++;
+                    }
+                });
+                
+                // Salvar progresso
+                if (this.currentVideo) {
+                    Storage.saveProgress(this.currentVideo.id, this.score, 10);
+                }
+                
+                // Mostrar resultados
+                this.showResults();
+            },
+            
+            showResults() {
+                // Esconder perguntas, mostrar resultados
+                document.getElementById('quizQuestions').style.display = 'none';
+                document.getElementById('quizResults').style.display = 'block';
+                
+                // Atualizar status
+                document.getElementById('quizStatus').textContent = 'Concluído';
+                document.getElementById('quizStatus').style.background = '#27ae60';
+                document.getElementById('quizProgress').textContent = '10/10';
+                
+                // Calcular porcentagem
+                const percentage = (this.score / 10) * 100;
+                
+                // Atualizar pontuação
+                document.getElementById('finalScore').textContent = this.score;
+                document.getElementById('scorePercentage').textContent = `${percentage.toFixed(1)}%`;
+                
+                // Feedback personalizado baseado no tema
+                const feedback = document.getElementById('resultsFeedback');
+                let feedbackHTML = '';
+                
+                // Feedback baseado no tema do vídeo
+                const videoTitle = this.currentVideo?.title || '';
+                
+                if (percentage >= 90) {
+                    feedbackHTML = `
+                        <h4 style="color: #27ae60; margin-bottom: 0.5rem;">🎉 Excelente!</h4>
+                        <p>Você dominou completamente o conteúdo de <strong>${videoTitle}</strong>!</p>
+                    `;
+                } else if (percentage >= 70) {
+                    feedbackHTML = `
+                        <h4 style="color: #3498db; margin-bottom: 0.5rem;">👍 Muito Bom!</h4>
+                        <p>Você entendeu bem <strong>${videoTitle}</strong>. Revise apenas alguns pontos.</p>
+                    `;
+                } else if (percentage >= 50) {
+                    feedbackHTML = `
+                        <h4 style="color: #f39c12; margin-bottom: 0.5rem;">💪 Bom esforço!</h4>
+                        <p>Assista <strong>${videoTitle}</strong> novamente e tente mais uma vez!</p>
+                    `;
+                } else {
+                    feedbackHTML = `
+                        <h4 style="color: #e74c3c; margin-bottom: 0.5rem;">📚 Continue estudando!</h4>
+                        <p>Recomendamos assistir <strong>${videoTitle}</strong> novamente e fazer anotações.</p>
+                    `;
+                }
+                
+                // Adicionar detalhes específicos do tema
+                feedbackHTML += `
+                    <div style="margin-top: 1rem; font-size: 0.9rem;">
+                        <p><strong>Tema:</strong> ${videoTitle}</p>
+                        <p><strong>Acertos:</strong> ${this.score}/10 questões</p>
+                        <p><strong>Porcentagem:</strong> ${percentage.toFixed(1)}%</p>
+                    </div>
+                `;
+                
+                feedback.innerHTML = feedbackHTML;
+                
+                Notification.show(`Resultado: ${this.score}/10 pontos em ${videoTitle}!`, 'success');
+            },
+            
+            restartQuiz() {
+                this.startQuiz();
+            }
+        };
+
+        // ===== APLICAÇÃO PRINCIPAL =====
+        const app = {
+            currentVideo: null,
+            videos: [
+                {
+                    id: 'k1BneeJTDcU',
+                    title: 'Aula 1: Introdução à Informática',
+                    description: 'Aprenda os conceitos básicos de computação e tecnologia. Descubra como funciona um computador e seus principais componentes.',
+                    thumbnail: 'https://img.youtube.com/vi/k1BneeJTDcU/mqdefault.jpg',
+                    publishedAt: 'há 1 semana',
+                    position: 1,
+                    theme: 'introducao_informatica'
+                },
+                {
+                    id: '20m3XmtrEV8',
+                    title: 'Aula 2: Windows 10 para Iniciantes',
+                    description: 'Primeiros passos no sistema operacional Windows. Aprenda a usar o menu iniciar, área de trabalho e explorador de arquivos.',
+                    thumbnail: 'https://img.youtube.com/vi/d0CHTc3T3BU/mqdefault.jpg',
+                    publishedAt: 'há 2 semanas',
+                    position: 2,
+                    theme: 'windows_iniciantes'
+                },
+                {
+                    id: '9bZkp7q19f0',
+                    title: 'Aula 3: Internet e Navegação Segura',
+                    description: 'Como usar a internet de forma segura e eficiente. Aprenda sobre navegadores, sites seguros e proteção online.',
+                    thumbnail: 'https://img.youtube.com/vi/9bZkp7q19f0/mqdefault.jpg',
+                    publishedAt: 'há 3 semanas',
+                    position: 3,
+                    theme: 'internet_segura'
+                },
+                {
+                    id: 'J---aiyznGQ',
+                    title: 'Aula 4: Microsoft Word Básico',
+                    description: 'Crie seu primeiro documento no Word. Aprenda formatação básica, salvar arquivos e imprimir documentos.',
+                    thumbnail: 'https://img.youtube.com/vi/J---aiyznGQ/mqdefault.jpg',
+                    publishedAt: 'há 1 mês',
+                    position: 4,
+                    theme: 'word_basico'
+                },
+                {
+                    id: '0fYi8SGAHxc',
+                    title: 'Aula 5: Excel para Iniciantes',
+                    description: 'Introdução às planilhas eletrônicas. Aprenda a criar tabelas, fórmulas básicas e gráficos simples.',
+                    thumbnail: 'https://img.youtube.com/vi/0fYi8SGAHxc/mqdefault.jpg',
+                    publishedAt: 'há 1 mês',
+                    position: 5,
+                    theme: 'excel_iniciantes'
+                }
+            ],
+            
+            init() {
+                console.log('🚀 Inicializando plataforma...');
+                
+                // Configurar eventos
+                this.setupEventListeners();
+                
+                // Carregar vídeos
+                this.displayVideos();
+                
+                // Atualizar estatísticas
+                this.updateProgressDisplay();
+                this.updateCounters();
+                
+                console.log('✅ Plataforma pronta!');
+                Notification.show('Plataforma carregada com sucesso!', 'success');
+            },
+            
+            setupEventListeners() {
+                // Navegação
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const section = link.dataset.section;
+                        this.showSection(section);
+                        
+                        // Atualizar navegação ativa
+                        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    });
+                });
+                
+                // Botões de seção
+                document.querySelectorAll('[data-section]').forEach(btn => {
+                    if (!btn.classList.contains('nav-link')) {
+                        btn.addEventListener('click', () => {
+                            const section = btn.dataset.section;
+                            this.showSection(section);
+                            
+                            // Atualizar navegação
+                            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                            const navLink = document.querySelector(`[data-section="${section}"]`);
+                            if (navLink) navLink.classList.add('active');
+                        });
+                    }
+                });
+                
+                // Menu responsivo
+                const menuToggle = document.querySelector('.menu-toggle');
+                if (menuToggle) {
+                    menuToggle.addEventListener('click', () => {
+                        document.querySelector('.nav').classList.toggle('active');
+                    });
+                }
+                
+                // Filtros de vídeo
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        
+                        const filter = btn.dataset.filter;
+                        this.filterVideos(filter);
+                    });
+                });
+            },
+            
+            showSection(sectionId) {
+                // Esconder todas as seções
+                document.querySelectorAll('.section').forEach(section => {
+                    section.style.display = 'none';
+                    section.classList.remove('active');
+                });
+                
+                // Mostrar seção selecionada
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.style.display = 'block';
+                    section.classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            },
+            
+            displayVideos() {
+                const container = document.getElementById('videosContainer');
+                if (!container) return;
+                
+                container.innerHTML = '';
+                
+                this.videos.forEach(video => {
+                    const isCompleted = Storage.isVideoCompleted(video.id);
+                    const score = Storage.getVideoScore(video.id);
+                    
+                    const videoCard = document.createElement('div');
+                    videoCard.className = 'video-card';
+                    videoCard.innerHTML = `
+                        <div class="video-thumbnail">
+                            <img src="${video.thumbnail}" alt="${video.title}" loading="lazy">
+                            <div class="video-play-btn" data-video-id="${video.id}">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-duration">Aula ${video.position}</div>
+                        </div>
+                        <div class="video-card-info">
+                            <h3 class="video-title">${video.title}</h3>
+                            <div class="video-meta">
+                                <span class="video-date">
+                                    <i class="fas fa-calendar"></i> ${video.publishedAt}
+                                </span>
+                            </div>
+                            ${isCompleted ? `
+                                <div class="video-completion">
+                                    <span class="completion-badge">
+                                        <i class="fas fa-check"></i> Concluído: ${score}/10
+                                    </span>
+                                </div>
+                            ` : `
+                                <button class="btn-primary watch-btn" data-video-id="${video.id}" style="width: 100%;">
+                                    <i class="fas fa-play"></i> Assistir Aula
+                                </button>
+                            `}
+                        </div>
+                    `;
+                    
+                    container.appendChild(videoCard);
+                });
+                
+                // Adicionar eventos aos botões
+                setTimeout(() => {
+                    document.querySelectorAll('.video-play-btn, .watch-btn').forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            const videoId = btn.dataset.videoId;
+                            this.playVideo(videoId);
+                        });
+                    });
+                    
+                    // Adicionar evento aos cards
+                    document.querySelectorAll('.video-card').forEach(card => {
+                        card.addEventListener('click', (e) => {
+                            if (!e.target.closest('.video-play-btn') && !e.target.closest('.watch-btn')) {
+                                const videoId = card.querySelector('[data-video-id]')?.dataset.videoId;
+                                if (videoId) {
+                                    this.playVideo(videoId);
+                                }
+                            }
+                        });
+                    });
+                }, 100);
+            },
+            
+            filterVideos(filter) {
+                if (!this.videos.length) return;
+                
+                let filteredVideos = [...this.videos];
+                
+                switch(filter) {
+                    case 'recent':
+                        filteredVideos.sort((a, b) => b.position - a.position);
+                        break;
+                    case 'incomplete':
+                        filteredVideos = filteredVideos.filter(video => !Storage.isVideoCompleted(video.id));
+                        break;
+                    case 'completed':
+                        filteredVideos = filteredVideos.filter(video => Storage.isVideoCompleted(video.id));
+                        break;
+                }
+                
+                const tempVideos = this.videos;
+                this.videos = filteredVideos;
+                this.displayVideos();
+                this.videos = tempVideos;
+            },
+            
+            playVideo(videoId) {
+                const video = this.videos.find(v => v.id === videoId);
+                if (!video) {
+                    Notification.show('Vídeo não encontrado!', 'error');
+                    return;
+                }
+                
+                this.currentVideo = video;
+                quiz.currentVideo = video;
+                
+                // Atualizar informações do vídeo
+                document.getElementById('videoTitle').textContent = video.title;
+                document.getElementById('videoDescription').textContent = video.description;
+                document.getElementById('videoDate').textContent = video.publishedAt;
+                document.getElementById('videoPosition').textContent = video.position;
+                
+                // Resetar quiz
+                this.resetQuizInterface();
+                
+                // Mostrar seção do player
+                this.showSection('videoPlayer');
+                
+                // Carregar o vídeo
+                this.loadYouTubeVideo(videoId);
+                
+                Notification.show(`Carregando: ${video.title}`, 'success');
+            },
+            
+            loadYouTubeVideo(videoId) {
+                const playerContainer = document.getElementById('youtubePlayer');
+                
+                // Limpar conteúdo anterior
+                playerContainer.innerHTML = '';
+                
+                // Criar iframe
+                const iframe = document.createElement('iframe');
+                iframe.className = 'video-frame';
+                iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&showinfo=0&controls=1`;
+                iframe.title = 'YouTube video player';
+                iframe.frameborder = '0';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                iframe.allowfullscreen = true;
+                iframe.id = 'youtubeIframe';
+                
+                playerContainer.appendChild(iframe);
+            },
+            
+            resetQuizInterface() {
+                document.querySelector('.quiz-intro').style.display = 'flex';
+                document.getElementById('quizQuestions').style.display = 'none';
+                document.getElementById('quizResults').style.display = 'none';
+                document.getElementById('quizStatus').textContent = 'Não iniciado';
+                document.getElementById('quizStatus').style.background = '#ecf0f1';
+                document.getElementById('quizProgress').textContent = '0/10';
+            },
+            
+            backToVideos() {
+                this.showSection('videos');
+                this.displayVideos();
+                this.updateProgressDisplay();
+            },
+            
+            updateProgressDisplay() {
+                const stats = Storage.getStatistics();
+                
+                // Atualizar estatísticas
+                document.getElementById('completedVideosCount').textContent = stats.totalVideos;
+                document.getElementById('totalScore').textContent = stats.totalScore;
+                
+                const accuracy = stats.totalPossible > 0 
+                    ? Math.round((stats.totalScore / stats.totalPossible) * 100) 
+                    : 0;
+                document.getElementById('accuracyRate').textContent = `${accuracy}%`;
+                
+                // Tempo de estudo estimado
+                const studyTime = stats.totalVideos * 5; // 5 minutos por vídeo
+                document.getElementById('studyTime').textContent = `${studyTime} min`;
+                
+                // Atualizar histórico
+                this.updateProgressHistory();
+            },
+            
+            updateProgressHistory() {
+                const progress = Storage.getProgress();
+                const historyContainer = document.getElementById('progressHistory');
+                
+                if (!progress.length) {
+                    historyContainer.innerHTML = `
+                        <div class="empty-history">
+                            <i class="fas fa-book-open"></i>
+                            <p>Comece a assistir vídeos e fazer quizzes para ver seu progresso aqui!</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                historyContainer.innerHTML = '';
+                
+                // Ordenar por data (mais recente primeiro)
+                const sortedProgress = [...progress].sort((a, b) => 
+                    new Date(b.date) - new Date(a.date)
+                ).slice(0, 5);
+                
+                sortedProgress.forEach(item => {
+                    const video = this.videos.find(v => v.id === item.videoId);
+                    if (!video) return;
+                    
+                    const historyItem = document.createElement('div');
+                    historyItem.className = 'history-item';
+                    historyItem.innerHTML = `
+                        <div class="history-video">
+                            <h4>${video.title.substring(0, 40)}...</h4>
+                            <p class="history-date">${this.formatDate(item.date)}</p>
+                        </div>
+                        <div class="history-score">
+                            ${item.score}/${item.totalQuestions}
+                        </div>
+                    `;
+                    
+                    historyContainer.appendChild(historyItem);
+                });
+            },
+            
+            updateCounters() {
+                // Contador de vídeos
+                document.getElementById('totalVideos').textContent = this.videos.length;
+                
+                // Contador de quizzes
+                document.getElementById('totalQuizzes').textContent = this.videos.length;
+                
+                // Contador de lições concluídas
+                const progress = Storage.getProgress();
+                document.getElementById('completedLessons').textContent = progress.length;
+                
+                // Pontuação média
+                const stats = Storage.getStatistics();
+                const average = stats.totalVideos > 0 
+                    ? Math.round((stats.totalScore / (stats.totalVideos * 10)) * 100) 
+                    : 0;
+                document.getElementById('averageScore').textContent = `${average}%`;
+            },
+            
+            formatDate(dateString) {
+                try {
+                    const date = new Date(dateString);
+                    const now = new Date();
+                    const diffTime = Math.abs(now - date);
+                    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+                    
+                    if (diffDays === 0) return 'Hoje';
+                    if (diffDays === 1) return 'Ontem';
+                    if (diffDays < 7) return `${diffDays} dias atrás`;
+                    if (diffDays < 30) return `${Math.floor(diffDays / 7)} semanas atrás`;
+                    
+                    return date.toLocaleDateString('pt-BR');
+                } catch {
+                    return dateString;
+                }
+            }
+        };
+
+        // ===== INICIALIZAR =====
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                app.init();
+            } catch (error) {
+                console.error('Erro ao inicializar:', error);
+                Notification.show('Erro ao carregar a plataforma', 'error');
+                
+                // Mostrar mensagem de erro
+                const main = document.querySelector('main');
+                if (main) {
+                    main.innerHTML = `
+                        <div style="text-align: center; padding: 4rem;">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: #e74c3c;"></i>
+                            <h2>Erro ao carregar</h2>
+                            <p>${error.message}</p>
+                            <button class="btn-primary" onclick="location.reload()" style="margin-top: 1rem;">
+                                <i class="fas fa-redo"></i> Recarregar
+                            </button>
+                        </div>
+                    `;
+                }
+            }
+        });
+
+        // ===== FUNÇÕES GLOBAIS =====
+        window.DoCliCon = {
+            app,
+            quiz,
+            Storage,
+            Notification
+        };
+
+        console.log(`
+        ========================================
+        DO CLIQUE AO CONHECIMENTO
+        Projeto Extensionista - CST ADS
+        Aluno: Gabriel do Nascimento Porto
+        RU: 1726037
+        Guajará-Mirim - RO
+        ========================================
+        ✅ 5 vídeos com quizzes temáticos
+        ✅ Cada vídeo tem seu quiz específico
+        ✅ Vídeos funcionam dentro da plataforma
+        ✅ Plataforma carregada com sucesso!
+        ========================================
+        `);
+    </script>
+</body>
+</html>
